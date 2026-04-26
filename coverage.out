@@ -1,0 +1,24 @@
+mode: set
+go-lru-cache/cache/lru.go:7.45,9.19 1 1
+go-lru-cache/cache/lru.go:9.19,11.3 1 1
+go-lru-cache/cache/lru.go:13.2,29.19 6 1
+go-lru-cache/cache/lru.go:32.45,37.9 4 1
+go-lru-cache/cache/lru.go:37.9,40.3 2 1
+go-lru-cache/cache/lru.go:42.2,45.25 3 1
+go-lru-cache/cache/lru.go:48.44,53.34 3 1
+go-lru-cache/cache/lru.go:53.34,57.3 3 1
+go-lru-cache/cache/lru.go:60.2,60.41 1 1
+go-lru-cache/cache/lru.go:60.41,62.3 1 1
+go-lru-cache/cache/lru.go:65.2,67.21 3 1
+go-lru-cache/cache/lru.go:70.27,72.2 1 1
+go-lru-cache/cache/lru.go:75.25,86.2 7 1
+go-lru-cache/cache/lru.go:88.41,90.103 1 1
+go-lru-cache/cache/lru.go:90.103,92.3 1 0
+go-lru-cache/cache/lru.go:93.2,97.17 4 1
+go-lru-cache/cache/lru.go:104.46,105.30 1 1
+go-lru-cache/cache/lru.go:105.30,107.3 1 1
+go-lru-cache/cache/lru.go:109.2,110.20 2 1
+go-lru-cache/cache/lru.go:120.45,128.2 5 1
+go-lru-cache/cache/lru.go:136.28,140.24 2 1
+go-lru-cache/cache/lru.go:140.24,142.3 1 0
+go-lru-cache/cache/lru.go:144.2,145.26 2 1

@@ -2,7 +2,6 @@ package cache
 
 import (
 	"errors"
-	"fmt"
 )
 
 func NewCache(capacity int) (*Cache, error) {
@@ -30,20 +29,20 @@ func NewCache(capacity int) (*Cache, error) {
 	return cache, nil
 }
 
-func (c *Cache) Get(key string) (any, error) {
+func (c *Cache) Get(key string) (any, bool) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
 	node, ok := c.items[key]
 	if !ok {
 		c.metadata.totalMisses++
-		return nil, fmt.Errorf("key not found: %s", key)
+		return nil, false
 	}
 
 	c.metadata.totalHits++
 	c.moveToFront(node)
 
-	return node.value, nil
+	return node.value, true
 }
 
 func (c *Cache) Put(key string, value any) {
@@ -123,6 +122,7 @@ func (c *Cache) addToFront(node *CacheNode) {
 
 	node.prev = c.list.head
 	node.next = mru
+
 	mru.prev = node
 	c.list.head.next = node
 }
@@ -130,7 +130,7 @@ func (c *Cache) addToFront(node *CacheNode) {
 // Purpose: evicts the least recently used node from the cache (LRU)
 //
 // Used in:
-//   - Put() when the cache is full: we need to remove the LRU to make room for the new node.
+//   - Put() when the cache is full: we need to evict the LRU to make room for the new node.
 //
 // What it does: pointer slicing only (no `remove`) and deleting the node from the map
 func (c *Cache) evictLRU() {
@@ -144,9 +144,4 @@ func (c *Cache) evictLRU() {
 	c.remove(lru)
 	delete(c.items, lru.key)
 
-}
-
-func (c *Cache) checkKeyExists(key string) bool {
-	_, ok := c.items[key]
-	return ok
 }
